@@ -10,6 +10,10 @@ module.exports = {
 		'common', 
 		'main',
 		'auth',
+		'error',
+		'settings',
+		'inbox',
+		'account',
 	], 
 };
 

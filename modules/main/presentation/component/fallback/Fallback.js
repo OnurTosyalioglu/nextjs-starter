@@ -12,6 +12,8 @@ import props from './props'
 import defaultProps from './props.default'
 import styles from './styles.module.css'
 
+import { Spinner } from '@material-tailwind/react'
+
 const Fallback = (props) => {  
 	const { t } = useTranslation(['main', ])
 	const router = useRouter()
@@ -19,8 +21,8 @@ const Fallback = (props) => {
 	useEffect(() => {})
 
 	return <Fragment>
-			<div className={''}>
-
+			<div className={'flex flex wrap w-full h-full justify-center items-center'}>
+				<Spinner className={''}/>
 			</div>
 		</Fragment>
 }

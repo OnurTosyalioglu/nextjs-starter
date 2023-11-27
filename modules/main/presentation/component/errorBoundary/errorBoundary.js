@@ -1,18 +1,42 @@
 import React, {Component, Fragment} from "react";
+import { withTranslation } from 'react-i18next'
 
 class ErrorBoundary extends Component {
-	constructor() {
-		super()
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			hasError: false,
+		}
 	}
 
-	componentDidMount() {
+	static getDerivedStateFromError(error) {
+    return { hasError: true }
+  }
 
-	}
+	componentDidCatch(error, errorInfo) {
+    console.log({ error, errorInfo })
+  }
 
-	render() {
-		return <Fragment>
-			</Fragment>
-	}
+  render() {
+    // Check if the error is thrown
+    if (this.state.hasError) {
+      // You can render any custom fallback UI
+      return (
+        <div>
+          <h2>Oops, there is an error!</h2>
+          <button
+            type="button"
+            onClick={() => this.setState({ hasError: false })}
+          >
+            Try again?
+          </button>
+        </div>
+      )
+    }
+  
+    return this.props.children
+  }
 }
 
-export default ErrorBoundary
+export default withTranslation('error')(ErrorBoundary)
